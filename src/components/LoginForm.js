@@ -4,24 +4,24 @@ import Logo from '../assets/MediHelp_Logo.svg';
 
 const LoginForm = () => {
 
-    const [errorEmailShow, setErrorEmailShow] = useState(false);    
-    const [errorPasswordShow, setErrorPasswordShow] = useState(false);
+    const [errorEmailShow, setErrorEmailShow] = useState( false );    
+    const [errorPasswordShow, setErrorPasswordShow] = useState( false );
 
     let email = useRef();
     let password = useRef();
     
-    const emailValidCheck = ( e ) => {
-        let userEmail = email.current.value;
-        let userPassword = password.current.value;
+    const emailValidCheck = () => {
+        let userEmail = email.current.value; //User se email
+        let userPassword = password.current.value; //User se password
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        if( !userEmail.match( regexEmail ) ) {
-            setErrorEmailShow( true );
-        }
+        !userEmail.match( regexEmail ) 
+        ? setErrorEmailShow( true ) 
+        : setErrorEmailShow( false )
 
-        if( userPassword.length < 6 ) {
-            setErrorPasswordShow( true );
-        }
+        userPassword.length < 6 
+        ? setErrorPasswordShow( true )
+        : setErrorPasswordShow( false )
     }
 
     return (
